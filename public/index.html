@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Manage the Miller family movie watchlists." />
+    <title>Family Movie Night</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <div>
+          <p class="eyebrow">Miller family</p>
+          <h1>Movie night, sorted.</h1>
+        </div>
+        <button id="logoutButton" class="button button-quiet" hidden>Log out</button>
+      </header>
+
+      <section id="loginPanel" class="login-grid">
+        <div class="intro">
+          <p class="kicker">One shared queue</p>
+          <h2>Pick the next family favorite.</h2>
+          <p>Sign in to browse every list. Parents can manage any list; children can manage their own.</p>
+        </div>
+
+        <form id="loginForm" class="card form-card">
+          <h2>Sign in</h2>
+          <label>
+            Username
+            <input name="username" autocomplete="username" required value="dad_miller" />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" autocomplete="current-password" required value="parent456" />
+          </label>
+          <button class="button button-primary" type="submit">Open watchlists</button>
+          <p id="loginMessage" class="message" role="status"></p>
+        </form>
+      </section>
+
+      <section id="appPanel" hidden>
+        <div class="toolbar card">
+          <div>
+            <p class="eyebrow">Signed in as</p>
+            <strong id="sessionLabel"></strong>
+          </div>
+          <label>
+            Watchlist
+            <select id="userSelect">
+              <option value="1">David</option>
+              <option value="2">Sarah</option>
+              <option value="3">Jake</option>
+              <option value="4">Sophie</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="workspace">
+          <section>
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Up next</p>
+                <h2 id="watchlistTitle">Watchlist</h2>
+              </div>
+              <button id="refreshButton" class="button button-quiet">Refresh</button>
+            </div>
+            <div id="movieList" class="movie-grid" aria-live="polite"></div>
+          </section>
+
+          <aside class="card add-card">
+            <p class="eyebrow">Add a pick</p>
+            <h2>New movie</h2>
+            <form id="movieForm">
+              <label>
+                Title
+                <input name="title" required placeholder="The Wild Robot" />
+              </label>
+              <label>
+                Genre
+                <input name="genre" placeholder="Animation" />
+              </label>
+              <button class="button button-primary" type="submit">Add to list</button>
+            </form>
+            <p id="appMessage" class="message" role="status"></p>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
